@@ -79,7 +79,15 @@ public class ComposeMailSteps {
         composeButton.click();
     }
 
-    @And("^I enter the recipient email address \"([^\"]*)\"$")
+    @Then("^New message window is opened$")
+    public void newMessageWindowIsOpened() {
+        WebElement dialogWindow = driver.findElement(By.xpath("//div[@class='aYF']/span"));
+        waitForElementVisibility(dialogWindow);
+        Assert.assertEquals("New Message title does not match","New Message",dialogWindow.getText());
+    }
+
+
+    @When("^I enter the recipient email address \"([^\"]*)\"$")
     public void iEnterTheRecipientEmailAddress(String receiptEmailAddr) throws Throwable {
         WebElement toEmail =  driver.findElement(By.xpath("//textarea[@name='to']"));
         waitForElementVisibility(toEmail);
@@ -130,4 +138,5 @@ public class ComposeMailSteps {
         Assert.assertEquals("Confirmation message does not match",true, isElementDisplayed(message));
         Thread.sleep(3000);
     }
+
 }

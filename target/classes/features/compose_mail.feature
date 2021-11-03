@@ -7,6 +7,7 @@ Feature: This is to test the compose mail of Gmail
     When I click on the Next button
     Then user is able to see inbox
     When I click on Compose button
+    Then New message window is opened
     And I enter the recipient email address "dummy.simple321@gmail.com"
     And i enter the subject "Incubyte"
     And I enter the body "Automation QA test for Incubyte"
